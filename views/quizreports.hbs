@@ -1,0 +1,112 @@
+<div class="wrapper">
+    {{> navbar}}
+    {{> sidebar}}
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Dashboard</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Quiz Reports</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <section class="content">
+            <div class="container-fluid">
+                <!-- Small boxes (Stat box) -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">{{quiz.title}}</h3>
+
+                                <div class="card-tools">
+                                    <div class="input-group input-group-sm" style="width: 150px;">
+                                        <input type="text" name="table_search" class="form-control float-right"
+                                            placeholder="Search">
+
+                                        <div class="input-group-append">
+                                            <button type="submit" class="btn btn-default">
+                                                <i class="fas fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body table-responsive p-0">
+                                {{#if messages.success}}
+                                <p class="alert alert-success" style="margin: 20px;">{{messages.success}}</p>
+                                {{/if}}
+
+                                {{#if messages.error}}
+                                <p class="alert alert-danger" style="margin: 20px;">{{messages.error}}</p>
+                                {{/if}}
+                                <table class="table table-hover text-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th>Username</th>
+                                            <th>Phone No.</th>
+                                            <th>Point</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each points }}
+                                        <tr>
+                                            <td>{{User.username}}</td>
+                                            <td>{{User.phoneno}}</td>
+                                            <td>{{value}}</td>
+                                            <td>
+                                                 {{#ifEquals @index 0}}
+                                                    <button class="btn btn-success btn-xs">WINNER</button>
+                                                    <a href="/admin/new-earnings?userid={{User.id}}&quizid={{Quiz.id}}&position=1" class="btn btn-info btn-xs"><i class="fa fa-paper-plane"></i> PAY NOW</a>
+                                                 {{/ifEquals}}
+
+                                                 {{#ifEquals @index 1}}
+                                                    <button class="btn btn-primary btn-xs">FIRST RUNNER UP</button>
+                                                    <a href="/admin/new-earnings?userid={{User.id}}&quizid={{Quiz.id}}&position=2" class="btn btn-info btn-xs"><i class="fa fa-send"></i>PAY</a>
+
+                                                 {{/ifEquals}}
+
+                                                 {{#ifEquals @index 2}}
+                                                    <button class="btn btn-warning btn-xs">SECOND RUNNER UP</button>
+                                                    <a href="/admin/new-earnings?userid={{User.id}}&quizid={{Quiz.id}}&position=3" class="btn btn-success btn-xs">
+                                                    <i class="fa fa-send"></i>PAY</a>
+                                                 {{/ifEquals}}
+                                            </td>
+                                        </tr>
+                                        {{/each}}
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+</div>
+
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script>
+    $('document').ready(function (event) {
+        $('body').addClass('hold-transition sidebar-mini layout-fixed')
+    })
+</script>

@@ -1,0 +1,29 @@
+{
+  "faqs": [
+    {
+      "id": 1,
+      "title": "What is Be1st?",
+      "description": "Be1st is a live trivia session where participants answer questions in realtime, testing their knowledge of subjects like football, music and general knowlege. Whoeveranswers the highest number of questions correctly in a session wins. The first three winners with the same point split the cash reward for that session. If there is only one winner, that person earns the entire cash reward"
+    },
+    {
+      "id": 2,
+      "title": "How do I play?",
+      "description": "Click on the live quiz on the home screen which will appear shortly before a live trivia session is about to begin. Notifications will be sent before a live session starts, so make sure to configure your phone settings so that you are able to receive them. For more information on how to play, go to 'How to Play' section under My Account "
+    },
+    {
+      "id": 3,
+      "title": "What is my Referral Code",
+      "description": "Share your referral code with your friends when you invite them to try out Be1st. Tell your friends to enter your referral code during sign up process. Once your friend has played a Be1st session, you will receive 10 free credit to play in next sessions "
+    },
+    {
+      "id": 4,
+      "title": "How do I send feedback",
+      "description": "Please email us at digicodedev@gmail.com with any suggestions or feedback. We would love to hear from you"
+    },
+    {
+      "id": 5,
+      "title": "Who do I contact for help?",
+      "description": "Please email us at digicodedev@gmail.com with any questions or issues you may have experienced using our application"
+    }
+  ]
+}

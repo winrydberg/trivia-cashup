@@ -1,0 +1,128 @@
+<div class="wrapper">
+    {{> navbar}}
+    {{> sidebar}}
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Dashboard</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <section class="content">
+            <div class="container-fluid">
+                <!-- Small boxes (Stat box) -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">All Quizes</h3>
+
+                                <div class="card-tools">
+                                    <div class="input-group input-group-sm" style="width: 150px;">
+                                        <input type="text" name="table_search" class="form-control float-right"
+                                            placeholder="Search">
+
+                                        <div class="input-group-append">
+                                            <button type="submit" class="btn btn-default">
+                                                <i class="fas fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body table-responsive p-0">
+                                <table class="table table-hover text-nowrap" id="example1">
+                                    <thead>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>Start Date</th>
+                                            <th>End Date</th>
+                                            <th>Status</th>
+                                            <th>Firebase Topic</th>
+                                            <th>Total Players</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each quizes}}
+                                        <tr>
+                                            <td>{{title}}</td>
+                                            <td>{{startdate}}</td>
+                                            <td>{{enddate}}</td>
+                                            <td>
+                                                {{#if status}}
+                                                <badge class="badge badge-success">Active</badge>
+                                                {{else}}
+                                                <badge class="badge badge-danger">Passed</badge>
+                                                {{/if}}
+                                            </td>
+                                            <td>{{firebasetopic}}</td>
+                                            <td>{{total_players}}</td>
+                                            <td>
+                                                <button class="btn btn-xs btn-danger"
+                                                    onclick="deactivateQuiz({{id}})">Deactivate</button>
+                                                <button class="btn btn-xs btn-info"
+                                                    onclick="activateQuiz({{id}})">Activate</button>
+                                                <a href="/admin/reports?quizid={{id}}"
+                                                    class="btn btn-xs btn-success">Quiz Report</a>
+                                                <a href="/admin/questions?quizid={{id}}"
+                                                    class="btn btn-xs btn-warning">Questions</a>
+                                            </td>
+                                        </tr>
+                                        {{/each}}
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+</div>
+
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script>
+    $('document').ready(function (event) {
+        $('body').addClass('hold-transition sidebar-mini layout-fixed')
+    })
+    //unblock-user
+
+    function deactivateQuiz(id) {
+        var resp = prompt("Are you sure? Enter yes to continue & no to cancel");
+        if (resp.toLowerCase() === 'yes' || resp.toLowerCase() === 'y') {
+            window.location.href = "/admin/deactivate-quiz?quizid=" + id
+        } else {
+            alert('Action cancelled')
+        }
+    }
+
+    function activateQuiz(id) {
+        var resp = prompt("Are you sure you want to activate quiz? Enter yes to activate");
+        if (resp.toLowerCase() === 'yes' || resp.toLowerCase() === 'y') {
+            window.location.href = "/admin/activate-quiz?quizid=" + id
+        } else {
+            alert('Action cancelled')
+        }
+    }
+</script>

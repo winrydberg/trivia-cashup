@@ -1,0 +1,34 @@
+{
+  "howto": [
+    {
+      "id": 1,
+      "icon": "ios-notifications-circle-outline",
+      "title": "Play a live trivia session",
+      "description": "We will send you a notification before the start of a live trivia session. Make sure notifications are enabled on your phone so you dont miss out"
+    },
+    {
+      "id": 2,
+      "icon": "wifi",
+      "title": "Stay connected during the session",
+      "description": "Secure a strong wifi or network signal so you dont lose connection during session"
+    },
+    {
+      "id": 3,
+      "icon": "md-medal",
+      "title": "Answer questions in real-time",
+      "description": "Think fast and answer the questions within the alloted time. if time expires before you select an option, you miss that question. Think carefully, you cant change your mind after you select an option"
+    },
+    {
+      "id": 4,
+      "icon": "trophy",
+      "title": "Be 1st and earn cash rewards",
+      "description": "Answer the highest number of questions correctly and earn points. Every correct answer will earn you points that contribute to you winning the daily prize and consequently winning the weekly prize  "
+    },
+    {
+      "id": 5,
+      "icon": "heart",
+      "title": "Refer your friends for free credit to play",
+      "description": "For each user that sign up with your referral code and participates in a trivia session, you will receive 10 free credits "
+    }
+  ]
+}

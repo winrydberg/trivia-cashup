@@ -1,0 +1,115 @@
+<div class="wrapper">
+    {{> navbar}}
+    {{> sidebar}}
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Dashboard</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <section class="content">
+            <div class="container-fluid">
+                <!-- Small boxes (Stat box) -->
+                <div class="row">
+                    <div class="col-md-8">
+                        <!-- general form elements -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">SEND NOTIFICATION</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            {{#if messages.success}}
+                            <p class="alert alert-success" style="margin: 20px;">{{messages.success}}</p>
+                            {{/if}}
+
+                            {{#if messages.error}}
+                            <p class="alert alert-danger" style="margin: 20px;">{{messages.error}}</p>
+                            {{/if}}
+                            <!-- form start -->
+                            <form action="/admin/send-notification" method="POST">
+                                <div class="card-body">
+                                    
+                                    <div class="form-group">
+                                        <label>To</label>
+                                        <select name="to" id="to" class="form-control select2bs4" style="width: 100%;">
+                                            <option value="0">All</option>
+                                            <option value="1">Particular User</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>To</label>
+                                        <select name="userid" id="userid" class="form-control select2bs4" style="width: 100%;">
+                                            <option value="null">Select A User</option>
+                                            {{#each users}}
+                                                <option value="{{id}}">{{username}} - {{phoneno}}</option>
+                                            {{/each}}
+
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Title</label>
+                                        <input class="form-control" name="title" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Message</label>
+                                        <textarea class="form-control" name="message"></textarea>
+                                    </div>
+
+                                </div>
+                                <!-- /.card-body -->
+
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary">Send Notification</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+</div>
+
+<script src="../public/plugins/jquery/jquery.min.js"></script>
+<!-- Select2 -->
+<script src="../public/plugins/select2/js/select2.full.min.js"></script>
+<script>
+    $('document').ready(function (event) {
+        $('body').addClass('hold-transition sidebar-mini layout-fixed');
+        $('#startdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
+        $('#enddatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
+
+        $('#to').change(function(){
+            if($('#to').val() == '1'){
+                
+            }
+        })
+    })
+
+     $(function () {
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })})
+</script>

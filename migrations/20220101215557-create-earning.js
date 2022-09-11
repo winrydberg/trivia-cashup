@@ -1,0 +1,39 @@
+"use strict";
+module.exports = {
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.createTable("Earnings", {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER,
+      },
+      userid: {
+        type: Sequelize.INTEGER,
+      },
+      quizid: {
+        type: Sequelize.INTEGER,
+      },
+      amount: {
+        type: Sequelize.DECIMAL,
+      },
+      paid: {
+        type: Sequelize.BOOLEAN,
+      },
+      position: {
+        type: Sequelize.INTEGER,
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+    });
+  },
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.dropTable("Earnings");
+  },
+};

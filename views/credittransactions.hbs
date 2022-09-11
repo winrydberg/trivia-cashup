@@ -1,0 +1,143 @@
+<div class="wrapper">
+    {{> navbar}}
+    {{> sidebar}}
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Dashboard</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <section class="content">
+            <div class="container-fluid">
+                <!-- Small boxes (Stat box) -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">All Credit Transactions</h3>
+
+                                <div class="card-tools">
+                                    <div class="input-group input-group-sm" style="width: 150px;">
+                                        <input type="text" name="table_search" class="form-control float-right"
+                                            placeholder="Search">
+
+                                        <div class="input-group-append">
+                                            <button type="submit" class="btn btn-default">
+                                                <i class="fas fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body table-responsive p-0">
+                                <form class="form-horizontal">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="">Start Date</label>
+                                                    <input type="date" name="startdate" id="startdate"
+                                                        class="form-control" placeholder="" aria-describedby="helpId">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="">End Date</label>
+                                                    <input type="date" name="enddate" id="enddate" class="form-control"
+                                                        placeholder="" aria-describedby="helpId">
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <br />
+                                                <button class="btn btn-primary" type="submit">Search</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <table class="table table-hover text-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th>Username</th>
+                                            <th>Amount(GHC)</th>
+                                            <th>Credit</th>
+                                            <th>Status</th>
+                                            <th>Reference</th>
+                                            <th>Action</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each transactions}}
+                                        <tr>
+                                            <td>{{username}}</td>
+                                            <td>{{creditamt}}</td>
+                                            <td>{{creditname}}</td>
+                                            <td>
+                                                {{#if completed}}
+                                                {{#if status}}
+                                                <badge class="badge badge-success">Paid/Completed</badge>
+                                                {{else}}
+                                                <badge class="badge badge-warning">Failed</badge>
+                                                {{/if}}
+                                                {{else}}
+                                                <badge class="badge badge-warning">Pending</badge>
+                                                {{/if}}
+
+                                            </td>
+                                            <td>{{xreference}}</td>
+                                            <td>
+                                                <button class="btn btn-xs btn-info"
+                                                    onclick="showAPIResponse({{json apiresponse}})">API
+                                                    Response</button>
+                                            </td>
+                                        </tr>
+
+                                        {{/each}}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+</div>
+
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script>
+    $('document').ready(function (event) {
+        $('body').addClass('hold-transition sidebar-mini layout-fixed')
+
+
+    })
+
+
+    function showAPIResponse(response) {
+        alert(response)
+    }
+
+</script>

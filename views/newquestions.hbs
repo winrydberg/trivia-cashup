@@ -1,0 +1,189 @@
+<div class="wrapper">
+    {{> navbar}}
+    {{> sidebar}}
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Dashboard</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <section class="content">
+            <div class="container-fluid">
+                <!-- Small boxes (Stat box) -->
+                <div class="row">
+                    <div class="col-md-7">
+                        <!-- general form elements -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">NEW QUESTION</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            {{#if messages.ssuccess}}
+                            <p class="alert alert-success" style="margin: 20px;">{{messages.ssuccess}}</p>
+                            {{/if}}
+
+                            {{#if messages.serror}}
+                            <p class="alert alert-danger" style="margin: 20px;">{{messages.serror}}</p>
+                            {{/if}}
+                            <!-- form start -->
+                            <form action="/admin/add-question" method="POST">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Question</label>
+                                        <textarea class="form-control" name="question"></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Quiz</label>
+                                        <select class="form-control" name="quiz">
+                                            <option value="null" disabled selected>Select A Quiz</option>
+                                            {{#each quizes}}
+                                            <option value="{{id}}">{{title}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="a">Possible Ans A</label>
+                                                <input type="text" name="a" class="form-control" id="a">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="b">Possible Ans B</label>
+                                                <input type="text" name="b" class="form-control" id="b">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="c">Possible Ans C</label>
+                                                <input type="text" name="c" class="form-control" id="c">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="d">Possible Ans A</label>
+                                                <input type="text" name="d" class="form-control" id="d">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="ca">Correct Answer(eg. A or B or C or D)</label>
+                                        <input type="text" name="ca" class="form-control" id="ca">
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="capoint">CA Point</label>
+                                                <input type="text" name="capoint" class="form-control" id="capoint">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="wapoint">WA Point</label>
+                                                <input type="text" name="wapoint" class="form-control" id="wapoint">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {{!-- <div class="form-group">
+                                        <label for="exampleInputFile">File input</label>
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" name="image" id="exampleInputFile">
+
+                                            </div>
+
+                                        </div>
+                                    </div> --}}
+
+                                </div>
+                                <!-- /.card-body -->
+
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary">ADD QUESTION</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card -->
+                    </div>
+
+                    <div class="col-md-5">
+                        <!-- general form elements -->
+                        <div class="card card-success">
+                            <div class="card-header">
+                                <h3 class="card-title">Quick Example</h3>
+                            </div>
+
+                            {{#if messages.success}}
+                            <p class="alert alert-info" style="margin: 10px;">{{messages.success}}</p>
+                            {{/if}}
+
+                            {{#if messages.error}}
+                            <p class="alert alert-danger" style="margin: 10px;">{{messages.error}}</p>
+                            {{/if}}
+                            <!-- /.card-header -->
+                            <!-- form start -->
+                            <form method="POST" enctype="multipart/form-data" action="/admin/excel-upload">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Quiz</label>
+                                        <select class="form-control" name="quiz">
+                                            <option value="null" disabled selected>Select A Quiz</option>
+                                            {{#each quizes}}
+                                            <option value="{{id}}">{{title}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Excel File</label>
+                                        <input type="file" name="excelfile" class="form-control" id="file">
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary">Upload File</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+</div>
+
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script>
+    $('document').ready(function (event) {
+        $('body').addClass('hold-transition sidebar-mini layout-fixed');
+        $('#startdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
+        $('#enddatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
+    })
+</script>
